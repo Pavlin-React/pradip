@@ -8,6 +8,7 @@ import FormButton from '../components/FormButton';
 const SignUpScreen = ({navigation}) => {
   let [email, setEmail] = useState('');
   let [password, setPassword] = useState('');
+  let [confirmPassword, setConfirmPassword] = useState('')
 
   return (
     <View style={styles.container}>
@@ -28,13 +29,20 @@ const SignUpScreen = ({navigation}) => {
         iconType="lock"
         secureTextEntry={true}
       />
+      <FormInput
+        labelValue={confirmPassword}
+        onChangeText={userPassword => setConfirmPassword(userPassword)}
+        placeholderText="Set Password"
+        iconType="lock"
+        secureTextEntry={true}
+      />
       <FormButton
         buttonTitle="Sign Up"
         onPress={() => alert('sign up is pressed')}
       />
       <View style={styles.textPrivate} >
         <Text style={styles.color_textPrivate}>By registering, you confirm that you accept our</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => alert('Terms clicked')}>
           <Text style={[styles.color_textPrivate, {color: '#e88832'}]}>Terms of service</Text>
         </TouchableOpacity>
         <Text style={styles.color_textPrivate}> and </Text>
@@ -55,10 +63,10 @@ const SignUpScreen = ({navigation}) => {
         onPress={() => {}}
       />
       <TouchableOpacity
-        style={styles.forgotButton}
-        onPress={() => navigation.navigate('SignUpScreen')}>
+        style={styles.navButton}
+        onPress={() => navigation.navigate('Login')}>
         <Text style={styles.navButtonText}>
-          Do not have acount? Create here
+          Have an account? Sign In
         </Text>
       </TouchableOpacity>
     </View>
